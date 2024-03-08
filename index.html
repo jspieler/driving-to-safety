@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driving to Safety - Which Distance of Driving Would It Take to Demonstrate Autonomous Vehicle Safety?</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Driving to Safety - Which Distance of Driving Would It Take to Demonstrate Autonomous Vehicle Safety?</h1>
+    <form>
+        <div class="input-group">
+			<div class="input-wrapper">
+				<label for="crashes">Crashes</label>
+				<input type="text" id="crashes" name="crashes" placeholder="Crashes per kilometer/mile" pattern="[0-9]+([eE][-+]?[0-9]+)?" title="Enter a numerical value (scientific notation allowed)">
+			</div>
+			<div class="input-wrapper">
+				<label for="injuries">Injuries</label>
+				<input type="text" id="injuries" name="injuries" placeholder="Injuries per kilometer/mile" pattern="[0-9]+([eE][-+]?[0-9]+)?" title="Enter a numerical value (scientific notation allowed)">
+			</div>
+			<div class="input-wrapper">
+				<label for="fatalities">Fatalities</label>
+				<input type="text" id="fatalities" name="fatalities" placeholder="Fatalities per kilometer/mile" pattern="[0-9]+([eE][-+]?[0-9]+)?" title="Enter a numerical value (scientific notation allowed)">
+			</div>
+		</div>
+
+        <label for="unit">Unit</label>
+        <select id="unit" name="unit">
+            <option value="kilometers">Kilometers</option>
+            <option value="miles">Miles</option>
+        </select>
+        
+        <label for="confidence">Confidence Interval</label>
+        <input type="text" id="confidence" name="confidence" placeholder="Enter Confidence Interval" title="Confidence interval as decimal number">
+		
+		<label for="precision">Precision</label>
+        <input type="text" id="precision" name="precision" placeholder="Enter degree of precision" title="Degree of precision as decimal number">
+		
+		<label for="improvement">Improvement over human drivers</label>
+        <input type="text" id="improvement" name="improvement" placeholder="Enter improvement over human drivers" title="Percentage improvement over human drivers as decimal number">
+        
+        <button type="button" onclick="calculate()">Calculate</button>
+    </form>
+	<h2>Results</h2>
+	<h3>Distance to be driven without failure to demonstrate failure rate is below some benchmark</h3>
+	<div id="resultsBenchmark"></div>
+    <canvas id="chartContainerBenchmark"></canvas>
+	<h3>Distance to be driven to demonstrate failure rate to a particular degree of precision</h3>
+	<div id="resultsPrecision"></div>
+    <canvas id="chartContainerPrecision"></canvas>
+	<h3>Distance to be driven to demonstrate failure rate is statistically significantly lower than human driver failure rate</h3>
+	<div id="resultsImprovement"></div>
+    <canvas id="chartContainerImprovement"></canvas>
+	<div id="source">Calculations are based on the following paper: <a href="https://doi.org/10.7249/RR1478">https://doi.org/10.7249/RR1478</a></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
