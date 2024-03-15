@@ -109,26 +109,45 @@ function calculate() {
     },
     options: {
       scales: {
-        xAxes: [
-          {
-            type: "logarithmic",
+        x: {
+          type: "logarithmic",
+          display: true,
+          title: {
             display: true,
-            scaleLabel: {
-              display: true,
-              labelString: "Failure rate",
+            text: "Failure rate",
+          },
+          ticks: {
+            callback: function (val) {
+              return val.toExponential();
             },
           },
-        ],
-        yAxes: [
-          {
-            type: "logarithmic",
+        },
+        y: {
+          type: "logarithmic",
+          display: true,
+          title: {
             display: true,
-            scaleLabel: {
-              display: true,
-              labelString: "Distance needed to be driven",
+            text: "Distance needed to be driven",
+          },
+          ticks: {
+            callback: function (val) {
+              return val.toExponential();
             },
           },
-        ],
+        },
+      },
+      plugins: {
+        tooltip: {
+          callbacks: {
+            title: function (context) {
+              let title = "";
+              if (context[0].parsed.x !== null) {
+                title += context[0].parsed.x;
+              }
+              return title;
+            },
+          },
+        },
       },
     },
   });
@@ -195,26 +214,45 @@ function calculate() {
     },
     options: {
       scales: {
-        xAxes: [
-          {
-            type: "logarithmic",
+        x: {
+          type: "logarithmic",
+          display: true,
+          title: {
             display: true,
-            scaleLabel: {
-              display: true,
-              labelString: "Failure rate",
+            text: "Failure rate",
+          },
+          ticks: {
+            callback: function (val) {
+              return val.toExponential();
             },
           },
-        ],
-        yAxes: [
-          {
-            type: "logarithmic",
+        },
+        y: {
+          type: "logarithmic",
+          display: true,
+          title: {
             display: true,
-            scaleLabel: {
-              display: true,
-              labelString: "Distance needed to be driven",
+            text: "Distance needed to be driven",
+          },
+          ticks: {
+            callback: function (val) {
+              return val.toExponential();
             },
           },
-        ],
+        },
+      },
+      plugins: {
+        tooltip: {
+          callbacks: {
+            title: function (context) {
+              let title = "";
+              if (context[0].parsed.x !== null) {
+                title += context[0].parsed.x;
+              }
+              return title;
+            },
+          },
+        },
       },
     },
   });
@@ -293,26 +331,45 @@ function calculate() {
     },
     options: {
       scales: {
-        xAxes: [
-          {
-            type: "linear",
+        x: {
+          type: "linear",
+          display: true,
+          title: {
             display: true,
-            scaleLabel: {
-              display: true,
-              labelString: "Percentage improvement over human drivers",
+            text: "Percentage improvement over human drivers",
+          },
+          ticks: {
+            callback: function (val) {
+              return (val * 100).toFixed(0) + " %";
             },
           },
-        ],
-        yAxes: [
-          {
-            type: "logarithmic",
+        },
+        y: {
+          type: "logarithmic",
+          display: true,
+          title: {
             display: true,
-            scaleLabel: {
-              display: true,
-              labelString: "Distance needed to be driven",
+            text: "Distance needed to be driven",
+          },
+          ticks: {
+            callback: function (val) {
+              return val.toExponential();
             },
           },
-        ],
+        },
+      },
+      plugins: {
+        tooltip: {
+          callbacks: {
+            title: function (context) {
+              let title = "";
+              if (context[0].parsed.x !== null) {
+                title += (context[0].parsed.x * 100).toFixed(0) + " %";
+              }
+              return title;
+            },
+          },
+        },
       },
     },
   });
